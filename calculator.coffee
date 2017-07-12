@@ -26,7 +26,6 @@ class NewCalculator1
       @result[@resultCount] = Number @value1
       console.log "resultCount : #{@resultCount}, Number : #{@result[@resultCount]}"
 
-
     )
 
     $('.menu').click((evt) =>
@@ -51,18 +50,18 @@ class NewCalculator1
       @resultCount = 0
       @result = []
       @calcList1 = []
+      @calCount1 = 0
+      @value1 = ''
     )
 
     $('#equal').click((evt) =>
-      @calcList2.push evt.target.defaultValue
+      @calcList3.push evt.target.defaultValue
       @total.push evt.target.defaultValue
-      console.log "calcList2 #{@calcList2}"
+      console.log "calcList3 #{@calcList3}"
       $('#disp').val(@total.join(''))
-
+      console.log
 
 
     )
-
-
 new NewCalculator1()
 
