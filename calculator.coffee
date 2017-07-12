@@ -6,26 +6,63 @@ class NewCalculator1
     @calcList1 = []
     @calcList2 = []
     @calcList3 = []
-    @count = 0
-    @value = ''
-    @result = ''
+    @calCount1 = 0
+    @calCount2 = 0
+    @calCount3 = 0
+    @value1 = ''
+    @value2 = ''
+    @value3 = ''
+    @result = []
+    @resultCount = 0
 
-    $('.num, .menu').click((evt) =>
+
+    $('.num').click((evt) =>
+      @calcList1.push evt.target.defaultValue
       @total.push evt.target.defaultValue
+      console.log "calcList1 #{@calcList1}"
       $('#disp').val(@total.join(''))
+      @value1 += @calcList1[@calCount1++]
+      console.log "String : #{@value1}"
+      @result[@resultCount] = Number @value1
+      console.log "resultCount : #{@resultCount}, Number : #{@result[@resultCount]}"
 
-      @value += @total[@count++]
-      console.log @value
+
+    )
+
+    $('.menu').click((evt) =>
+      @calcList2.push evt.target.defaultValue
+      @total.push evt.target.defaultValue
+      console.log "calcList2 #{@calcList2}"
+      $('#disp').val(@total.join(''))
+      @resultCount++
+      @calcList1 = []
+      @calCount1 = 0
+      @value1 = ''
 
     )
 
     $('#C').click((evt) =>
-      @calcList1.push evt.target.defaultValue
+      @total.push evt.target.defaultValue
       $('#disp').val(@total.clear)
       @total = []
-      @count = 0
-      @value = ''
+      @calcList1 = []
+      @calcList2 = []
+      @calcList3 = []
+      @resultCount = 0
+      @result = []
+      @calcList1 = []
+    )
+
+    $('#equal').click((evt) =>
+      @calcList2.push evt.target.defaultValue
+      @total.push evt.target.defaultValue
+      console.log "calcList2 #{@calcList2}"
+      $('#disp').val(@total.join(''))
+
+
 
     )
 
+
 new NewCalculator1()
+
