@@ -14,8 +14,10 @@ class NewCalculator1
     @value3 = ''
     @result = []
     @resultCount = 0
+    @final = 0
+    @finalCount = 0
 
-
+    #숫자를 눌렀을 경우
     $('.num').click((evt) =>
       @calcList1.push evt.target.defaultValue
       @total.push evt.target.defaultValue
@@ -25,9 +27,9 @@ class NewCalculator1
       console.log "String : #{@value1}"
       @result[@resultCount] = Number @value1
       console.log "resultCount : #{@resultCount}, Number : #{@result[@resultCount]}"
-
     )
 
+    #연산자를 눌렀을 경우
     $('.menu').click((evt) =>
       @calcList2.push evt.target.defaultValue
       @total.push evt.target.defaultValue
@@ -37,9 +39,48 @@ class NewCalculator1
       @calcList1 = []
       @calCount1 = 0
       @value1 = ''
+    )
+
+    # "="를 눌렀을 경우 저장된 값들을 계산하는 단계
+    $('#equal').click((evt) =>
+      @calcList3.push evt.target.defaultValue
+      @total.push evt.target.defaultValue
+      console.log "calcList3 #{@calcList3}"
+      if @finalCount == 0
+        for i in [0..@resultCount]
+          if i == 0
+            @final += @result[0]
+            console.log "finalCount = #{@finalCount}일때, final = #{@final}"
+          else
+            switch @calcList2[(i-1)]
+              when "+"
+                @final += @result[i]
+                @finalCount++
+                console.log "finalCount = #{@finalCount}일때, final = #{@final}"
+              when "-"
+                @final += @result[i]
+                @finalCount++
+                console.log "finalCount = #{@finalCount}일때, final = #{@final}"
+              when "*"
+                @final += @result[i]
+                @finalCount++
+                console.log "finalCount = #{@finalCount}일때, final = #{@final}"
+              when "/"
+                @final += @result[i]
+                @finalCount++
+                console.log "finalCount = #{@finalCount}일때, final = #{@final}"
+      else
+        console.log "finalCount = #{@finalCount}일때, final = #{@final}"
+        @finalCount++
+
+
+
+      @total = []
+      $('#disp').val @final
 
     )
 
+    # "C"를 눌렀을 경우 모두 초기화 하는 단계
     $('#C').click((evt) =>
       @total.push evt.target.defaultValue
       $('#disp').val(@total.clear)
@@ -52,16 +93,9 @@ class NewCalculator1
       @calcList1 = []
       @calCount1 = 0
       @value1 = ''
+      @final = 0
     )
 
-    $('#equal').click((evt) =>
-      @calcList3.push evt.target.defaultValue
-      @total.push evt.target.defaultValue
-      console.log "calcList3 #{@calcList3}"
-      $('#disp').val(@total.join(''))
-      console.log
 
-
-    )
 new NewCalculator1()
 
