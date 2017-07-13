@@ -9,6 +9,8 @@ class NewCalculator1
     @calCount1 = 0
     @calCount2 = 0
     @calCount3 = 0
+    @calCount4 = 0
+    @doubleEqual = ''
     @value1 = ''
     @value2 = ''
     @value3 = ''
@@ -35,10 +37,11 @@ class NewCalculator1
       @calcList2.push evt.target.defaultValue
       @total.push evt.target.defaultValue
       console.log "calcList2 #{@calcList2}"
-      $('#disp').val(@total.join(''))
-      $('#disp1').val(@calcList2.join(''))
       @resultCount++
+      @calCount4++
       @calcList1 = []
+      $('#disp').val(@total.join(''))
+      $('#disp1').val(@calcList2[@calCount4-1])
       @calCount2 = 0
       @calCount1 = 0
       @value1 = ''
