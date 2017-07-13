@@ -45,7 +45,6 @@ class NewCalculator1
     $('#equal').click((evt) =>
       @calcList3.push evt.target.defaultValue
       @total.push evt.target.defaultValue
-      console.log "calcList3 #{@calcList3}"
       if @finalCount == 0
         for i in [0..@resultCount]
           if i == 0
@@ -72,10 +71,29 @@ class NewCalculator1
       else
         console.log "finalCount = #{@finalCount}일때, final = #{@final}"
         @finalCount++
-
-
-
-      @total = []
+        for i in [@finalCount..@resultCount]
+          if i == @finalCount
+            @final += @result[@finalCount]
+            console.log "finalCount = #{@finalCount}일때, final(#{@finalCount+1}번째 값) = #{@final}"
+          else
+            switch @calcList2[(i-1)]
+              when "+"
+                @final += @result[i]
+                @finalCount++
+                console.log "finalCount = #{@finalCount}일때, 연산자 : #{@calcList2[i-1]}이고, final(#{@finalCount+1}번째 값) = #{@result[i]}, 계산 결과 값 :  #{@final}"
+              when "-"
+                @final -= @result[i]
+                @finalCount++
+                console.log "finalCount = #{@finalCount}일때, 연산자 : #{@calcList2[i-1]}이고, final(#{@finalCount+1}번째 값) = #{@result[i]}, 계산 결과 값 :  #{@final}"
+              when "*"
+                @final *= @result[i]
+                @finalCount++
+                console.log "finalCount = #{@finalCount}일때, 연산자 : #{@calcList2[i-1]}이고, final(#{@finalCount+1}번째 값) = #{@result[i]}, 계산 결과 값 :  #{@final}"
+              when "/"
+                @final /= @result[i]
+                @finalCount++
+                console.log "finalCount = #{@finalCount}일때, 연산자 : #{@calcList2[i-1]}이고, final(#{@finalCount+1}번째 값) = #{@result[i]}, 계산 결과 값 :  #{@final}"
+      @total = [@final]
       $('#disp').val @final
 
     )
