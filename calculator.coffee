@@ -45,6 +45,7 @@ class NewCalculator1
     $('#equal').click((evt) =>
       @calcList3.push evt.target.defaultValue
       @total.push evt.target.defaultValue
+      $('#disp').val(@total.join(''))
       if @finalCount == 0
         for i in [0..@resultCount]
           if i == 0
@@ -89,7 +90,6 @@ class NewCalculator1
                 @final /= @result[i]
                 @finalCount++
                 console.log "finalCount = #{@finalCount}일때, 연산자 : #{@calcList2[i-1]}이고, final(#{@finalCount+1}번째 값) = #{@result[i]}, 계산 결과 값 :  #{@final}"
-
           else
             switch @calcList2[(i-1)]
               when "+"
@@ -109,14 +109,14 @@ class NewCalculator1
                 @finalCount++
                 console.log "finalCount = #{@finalCount}일때, 연산자 : #{@calcList2[i-1]}이고, final(#{@finalCount+1}번째 값) = #{@result[i]}, 계산 결과 값 :  #{@final}"
       @total = [@final]
-      $('#disp').val @final
-
+      $('#disp1').val @final
     )
 
     # "C"를 눌렀을 경우 모두 초기화 하는 단계
     $('#C').click((evt) =>
       @total.push evt.target.defaultValue
       $('#disp').val(@total.clear)
+      $('#disp1').val(@total.clear)
       @total = []
       @calcList1 = []
       @calcList2 = []
