@@ -50,25 +50,25 @@ class NewCalculator1
         for i in [0..@resultCount]
           if i == 0
             @final += @result[0]
-            console.log "finalCount = #{@finalCount}일때, final = #{@final}"
+            console.log "finalCount = #{@finalCount}일때, final(#{@finalCount+1}번째 값) = #{@final}"
           else
             switch @calcList2[(i-1)]
               when "+"
                 @final += @result[i]
                 @finalCount++
-                console.log "finalCount = #{@finalCount}일때, final = #{@final}"
+                console.log "finalCount = #{@finalCount}일때, 연산자 : #{@calcList2[i-1]}이고, final(#{@finalCount+1}번째 값) = #{@result[i]}, 계산 결과 값 :  #{@final}"
               when "-"
-                @final += @result[i]
+                @final -= @result[i]
                 @finalCount++
-                console.log "finalCount = #{@finalCount}일때, final = #{@final}"
+                console.log "finalCount = #{@finalCount}일때, 연산자 : #{@calcList2[i-1]}이고, final(#{@finalCount+1}번째 값) = #{@result[i]}, 계산 결과 값 :  #{@final}"
               when "*"
-                @final += @result[i]
+                @final *= @result[i]
                 @finalCount++
-                console.log "finalCount = #{@finalCount}일때, final = #{@final}"
+                console.log "finalCount = #{@finalCount}일때, 연산자 : #{@calcList2[i-1]}이고, final(#{@finalCount+1}번째 값) = #{@result[i]}, 계산 결과 값 :  #{@final}"
               when "/"
-                @final += @result[i]
+                @final /= @result[i]
                 @finalCount++
-                console.log "finalCount = #{@finalCount}일때, final = #{@final}"
+                console.log "finalCount = #{@finalCount}일때, 연산자 : #{@calcList2[i-1]}이고, final(#{@finalCount+1}번째 값) = #{@result[i]}, 계산 결과 값 :  #{@final}"
       else
         console.log "finalCount = #{@finalCount}일때, final = #{@final}"
         @finalCount++
@@ -94,6 +94,7 @@ class NewCalculator1
       @calCount1 = 0
       @value1 = ''
       @final = 0
+      @finalCount = 0
     )
 
 
