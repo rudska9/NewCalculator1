@@ -70,8 +70,7 @@ class NewCalculator1
                 console.log "finalCount = #{@finalCount}일때, 연산자 : #{@calcList2[i-1]}이고, final(#{@finalCount+1}번째 값) = #{@result[i]}, 계산 결과 값 :  #{@final}"
       else
         console.log "finalCount = #{@finalCount}일때, final = #{@final}"
-        @finalCount++
-        for i in [@finalCount..@resultCount]
+        for i in [@finalCount+1..@resultCount]
           if i == @finalCount
             switch @calcList2[(i-1)]
               when "+"
