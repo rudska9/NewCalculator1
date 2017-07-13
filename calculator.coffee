@@ -9,7 +9,7 @@ class NewCalculator1
     @calCount1 = 0
     @calCount2 = 0
     @calCount3 = 0
-    @calCount4 = 0
+    @calMenu = 0
     @doubleEqual = ''
     @value1 = ''
     @value2 = ''
@@ -41,7 +41,7 @@ class NewCalculator1
       @calCount4++
       @calcList1 = []
       $('#disp').val(@total.join(''))
-      $('#disp1').val(@calcList2[@calCount4-1])
+      $('#disp1').val(@calcList2[@calMenu-1])
       @calCount2 = 0
       @calCount1 = 0
       @value1 = ''
@@ -50,9 +50,12 @@ class NewCalculator1
     # "="를 눌렀을 경우 저장된 값들을 계산하는 단계
     $('#equal').click((evt) =>
       @calcList3.push evt.target.defaultValue
+      #@doubleEqual += @calcList3[@calCount3++]
+      console.log @doubleEqual
       @total.push evt.target.defaultValue
       $('#disp').val(@total.join(''))
-      if @finalCount == 0
+
+      if @finalCount == 0 #&& @doubleEqual != "=="
         for i in [0..@resultCount]
           if i == 0
             @final += @result[0]
@@ -75,6 +78,8 @@ class NewCalculator1
                 @final /= @result[i]
                 @finalCount++
                 console.log "finalCount = #{@finalCount}일때, 연산자 : #{@calcList2[i-1]}이고, final(#{@finalCount+1}번째 값) = #{@result[i]}, 계산 결과 값 :  #{@final}"
+      else if @doubleEqual == "=="
+
       else
         console.log "finalCount = #{@finalCount}일때, final = #{@final}"
         for i in [@finalCount+1..@resultCount]
@@ -117,6 +122,7 @@ class NewCalculator1
       @total = [@final]
       @calcList2 = []
       @calCount2 = 0
+      @calCount4 = 0
       $('#disp1').val @final
     )
 
@@ -136,6 +142,8 @@ class NewCalculator1
       @value1 = ''
       @final = 0
       @finalCount = 0
+      @calMenu = 0
+      @calCount3 = 0
     )
 
 
