@@ -23,6 +23,7 @@ class NewCalculator1
       @total.push evt.target.defaultValue
       console.log "calcList1 #{@calcList1}"
       $('#disp').val(@total.join(''))
+      $('#disp1').val(@calcList1.join(''))
       @value1 += @calcList1[@calCount1++]
       console.log "String : #{@value1}"
       @result[@resultCount] = Number @value1
@@ -35,8 +36,10 @@ class NewCalculator1
       @total.push evt.target.defaultValue
       console.log "calcList2 #{@calcList2}"
       $('#disp').val(@total.join(''))
+      $('#disp1').val(@calcList2.join(''))
       @resultCount++
       @calcList1 = []
+      @calCount2 = 0
       @calCount1 = 0
       @value1 = ''
     )
@@ -73,7 +76,7 @@ class NewCalculator1
         console.log "finalCount = #{@finalCount}일때, final = #{@final}"
         for i in [@finalCount+1..@resultCount]
           if i == @finalCount
-            switch @calcList2[(i-1)]
+            switch @calcList2[(@calCount2)]
               when "+"
                 @final += @result[i]
                 @finalCount++
@@ -91,7 +94,7 @@ class NewCalculator1
                 @finalCount++
                 console.log "finalCount = #{@finalCount}일때, 연산자 : #{@calcList2[i-1]}이고, final(#{@finalCount+1}번째 값) = #{@result[i]}, 계산 결과 값 :  #{@final}"
           else
-            switch @calcList2[(i-1)]
+            switch @calcList2[@calCount2++]
               when "+"
                 @final += @result[i]
                 @finalCount++
@@ -109,6 +112,8 @@ class NewCalculator1
                 @finalCount++
                 console.log "finalCount = #{@finalCount}일때, 연산자 : #{@calcList2[i-1]}이고, final(#{@finalCount+1}번째 값) = #{@result[i]}, 계산 결과 값 :  #{@final}"
       @total = [@final]
+      @calcList2 = []
+      @calCount2 = 0
       $('#disp1').val @final
     )
 
