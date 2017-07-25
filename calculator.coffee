@@ -78,6 +78,10 @@ class NewCalculator1
                 @final /= @result[i]
                 @finalCount++
                 console.log "finalCount = #{@finalCount}일때, 연산자 : #{@calcList2[i-1]}이고, final(#{@finalCount+1}번째 값) = #{@result[i]}, 계산 결과 값 :  #{@final}"
+              when "%"
+                @final %= @result[i]
+                @finalCount++
+                console.log "finalCount = #{@finalCount}일때, 연산자 : #{@calcList2[i-1]}이고, final(#{@finalCount+1}번째 값) = #{@result[i]}, 계산 결과 값 :  #{@final}"
       else if @doubleEqual == "=="
 
       else
@@ -101,6 +105,10 @@ class NewCalculator1
                 @final /= @result[i]
                 @finalCount++
                 console.log "finalCount = #{@finalCount}일때, 연산자 : #{@calcList2[i-1]}이고, final(#{@finalCount+1}번째 값) = #{@result[i]}, 계산 결과 값 :  #{@final}"
+              when "%"
+                @final %= @result[i]
+                @finalCount++
+                console.log "finalCount = #{@finalCount}일때, 연산자 : #{@calcList2[i-1]}이고, final(#{@finalCount+1}번째 값) = #{@result[i]}, 계산 결과 값 :  #{@final}"
           else
             switch @calcList2[@calCount2++]
               when "+"
@@ -117,6 +125,10 @@ class NewCalculator1
                 console.log "finalCount = #{@finalCount}일때, 연산자 : #{@calcList2[i-1]}이고, final(#{@finalCount+1}번째 값) = #{@result[i]}, 계산 결과 값 :  #{@final}"
               when "/"
                 @final /= @result[i]
+                @finalCount++
+                console.log "finalCount = #{@finalCount}일때, 연산자 : #{@calcList2[i-1]}이고, final(#{@finalCount+1}번째 값) = #{@result[i]}, 계산 결과 값 :  #{@final}"
+              when "%"
+                @final %= @result[i]
                 @finalCount++
                 console.log "finalCount = #{@finalCount}일때, 연산자 : #{@calcList2[i-1]}이고, final(#{@finalCount+1}번째 값) = #{@result[i]}, 계산 결과 값 :  #{@final}"
       @total = [@final]
